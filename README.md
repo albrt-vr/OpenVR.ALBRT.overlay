@@ -2,7 +2,7 @@
 An overlay application for OpenVR (SteamVR)
 ----
 
-This organisation's repositories, and this repository, contains technical demonstrations of software based visual deltas within game engines utilising stereo rendering APIs and stand alone stereo rendering APIs. Nothing present is intended to be used as a product or for any purpose beyond technical reference. Everything is provided by its respective contributor as-is with no warranty, guarantee, or liability; for misuse, damage, or any detriment to any computer system, person, or thing.
+This organisation's repositories, and this repository, contains technical demonstrations of software based visual deltas within game engines utilising stereo rendering APIs and stand alone stereo rendering APIs. All content is for educational purposes only. Nothing present is intended to be used as a product or for any purpose beyond technical reference. Everything is provided by its respective contributor as-is with no warranty, guarantee, or liability; for misuse, damage, or any detriment to any computer system, person, or thing.
 
 The software examples and demos involve the use of stereo rendering techniques present in APIs, libraries, and product SDKs. All software examples and demos are extensions or uses of stereo rendering available in these APIs and do not constitute a product or device in their own right. No exclusive access, exclusive rights, or API modifications are used in any way within any of the software examples or demos. Any disputes or concerns regarding these APIs should be forwarded to the respective owner of the API in question. e.g. Unity, Valve, Meta, Khronos Group (this is a non exhaustive list).
 
