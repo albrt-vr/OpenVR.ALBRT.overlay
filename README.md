@@ -41,6 +41,7 @@ You must use a .png (32 bit, ie with transparency) and I advise a resolution of 
 
 You must name mask pairs with the same base filename, and add a suffix of .a and .b to each filename. For example cat.a.png & cat.b.png. These will then be shown as a mask pair within the settings window. Mask pairs will start rendering mask ‘a’ on the left, and mask ‘b’ on the right. Press the ‘switch eyes’ option in the settings window to change this. If you wish to permanently switch this, simply rename the suffixes on the mask pair, ie a->b and b->a.
 
-For single masks you may name the files in any way you wish. For example a_random_name_here.png. This will be shown as a single mask and will only apply to a single lens. Single masks start rendering on the left hand side. Press the ‘switch eyes’ option in the settings window to change this.
+For single masks you may name the files in any way you wish. For example a_random_name_here.png. This will be shown as a single mask and will only apply to a single lens. Single masks start rendering on the left hand side. Press the ‘switch eyes’ option in the settings window to change this. If you wish to permanently set one side, you may add the suffix ‘r’ or ‘l’ to the file name, ie mask.r.png. This will automatically render the single mask on the chosen side.
+
 
 All colours and transparency within the .png will be rendered, so ensure your source images have all of the desired values. The overall transparency of the masks can be changed within the settings window.
