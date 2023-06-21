@@ -23,7 +23,7 @@ This app runs on Windows 64 bit, but can be built for other platforms.
 
 This is not a signed app and it has no installer.
 
-This app will never be distributed on any other platform or installer. If in doubt about the source of your version, you should re-download from this repository, or a trustworthy fork.
+This app will never be distributed BY US on any other platform or installer. If in doubt about the source of your version, you should re-download from this repository, or a trustworthy fork.
 
 This app is licensed under the MIT licence, and uses OpenVR which is under the BSD-3-Clause licence. If you make substantial improvements we ask kindly that you fork from this repository and contribute your changes via a pull request (You are under no obligation to do this under the aforementioned licences, it is a request only).
 
