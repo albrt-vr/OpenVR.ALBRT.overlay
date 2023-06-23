@@ -14,16 +14,18 @@ Please read all licensing documents and files, including those in sub directorie
 
 ----
 
-**IMPORTANT:** If you wish to run this on any platform except Windows 64 you will need to build the project. The pre-build is win64 only.
+**IMPORTANT:** The cross platform builds have been removed due to the effort of testing, and other reasons relating to window rendering which broke the SteamVR window manager. Scroll to the bottom to read a summary.
+
+(Note this README is synced with the staging repo so you may not yet see the content referenced within)
 
 # Notes About This App
 This overlay runs as a desktop window, it does not run as a dashboard overlay, as the options for desktop window overlays currently exceed those for dashboard overlays within SteamVR.
 
-This app runs on Windows 64 bit, but can be built for other platforms.
+This app runs on Windows 10+ 64 bit. (This may change; depending on testing)
 
-This is not a signed app and it has no installer.
+This is not a signed app and it has no installer. (This may change; depending on framework used)
 
-This app will never be distributed BY US on any other platform or installer. If in doubt about the source of your version, you should re-download from this repository, or a trustworthy fork.
+This app will never be distributed BY us on any other platform or installer. If in doubt about the source of your version, you should re-download from this repository, or a trustworthy fork.
 
 This app is licensed under the MIT licence, and uses OpenVR which is under the BSD-3-Clause licence. If you make substantial improvements we ask kindly that you fork from this repository and contribute your changes via a pull request (You are under no obligation to do this under the aforementioned licences, it is a request only).
 
@@ -43,5 +45,9 @@ You must name mask pairs with the same base filename, and add a suffix of .a and
 
 For single masks you may name the files in any way you wish. For example a_random_name_here.png. This will be shown as a single mask and will only apply to a single lens. Single masks start rendering on the left hand side. Press the ‘switch eyes’ option in the settings window to change this. If you wish to permanently set one side, you may add the suffix ‘r’ or ‘l’ to the file name, ie mask.r.png. This will automatically render the single mask on the chosen side.
 
-
 All colours and transparency within the .png will be rendered, so ensure your source images have all of the desired values. The overall transparency of the masks can be changed within the settings window.
+
+# Notes on Cross Platform Versions
+I wrote this app in cpp, and gave up due to the UI requirements. I then moved to QT (major issues), and then to Avalonia (window rendering disallows SteamVR window mgr to see them). I considered MAUI but it lacks Linux build support and requires packaged releases. If you wish to help port this to Linux please feel free to fork and improve. I will probably work on the cpp version as a minimalist app with config files instead of a UI; but for now it is removed.
+
+API SOURCES: The cpp OpenVR API is available at the OpenVR repo, and the C# api is available within this repo or as part of the Unity SteamVR plugin. I encourage you to play with them yourself as overlays are incredibly simple.
