@@ -34,6 +34,8 @@ Download the newest release from the releases page, and run the ALBRT.overlay.ex
 
 YOU SHOULD NOT ADD THIS AS A GAME IN YOUR STEAM LIBRARY. It is not a stand alone game, and running it as a game will prevent it from working as intended. It must be run from your system so it can initialise as an OpenVR overlay app.
 
+You should not run multiple instances of this app as it has hard coded overlay keys. Close all duplicate instances. (If there is a use case for this please submit and issue and explain)
+
 There is a directory within the app’s root directory called ‘Image Masks’ which can be modified or added to. Please see the section ‘Modify the Masks’.
 
 To open the settings window within VR; open the SteamVR dashboard, press [window icon] 'Desktops' then in the bottom right [(+) circled plus icon] 'Add View'. You may then pin the UI to your controller by pressing the controller icons, or place the window within the VR world by holding on the [+ cross arrows icon] and dragging it around. I suggest placing the UI behind you within the scene.
@@ -65,7 +67,7 @@ Solution:
 2. Re-run the app.
 
 ### [E:2] Overlays error / Running twice
-(Generic) Something went wrong during overlay rendering.
+(Generic) Something went wrong during overlay rendering. Or two instances of this app are trying to manage the overlays.
 
 Solution: 
 1. Ensure the app has not been run multiple times.
@@ -78,7 +80,8 @@ If not running twice:
 
 ### [E:3] Dashboard overlay error / Running twice
 NOTE: There is no dashboard rendering in the current app - use desktop window pinning instead.
-(Generic) Something went wrong during dashboard overlay rendering.
+
+(Generic) Something went wrong during dashboard overlay rendering. Or two instances of this app are trying to manage the overlays.
 
 Solution: 
 1. Ensure the app has not been run multiple times.
