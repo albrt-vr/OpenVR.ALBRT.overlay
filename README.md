@@ -64,18 +64,27 @@ Solution:
 1. Restart SteamVR.
 2. Re-run the app.
 
-### [E:2] Overlays error
+### [E:2] Overlays error / Running twice
 (Generic) Something went wrong during overlay rendering.
 
 Solution: 
+1. Ensure the app has not been run multiple times.
+2. Close any instances of the app reporting the error and use the one that works.
+
+If not running twice:
 
 1. Restart SteamVR.
 2. Re-run the app.
 
-### [E:3] Dashboard overlay error
+### [E:3] Dashboard overlay error / Running twice
+NOTE: There is no dashboard rendering in the current app - use desktop window pinning instead.
 (Generic) Something went wrong during dashboard overlay rendering.
 
 Solution: 
+1. Ensure the app has not been run multiple times.
+2. Close any instances of the app reporting the error and use the one that works.
+
+If not running twice:
 
 1. Restart SteamVR.
 2. Re-run the app.
