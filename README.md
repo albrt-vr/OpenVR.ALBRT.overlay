@@ -34,7 +34,7 @@ Download the newest release from the releases page, and run the ALBRT.overlay.ex
 
 YOU SHOULD NOT ADD THIS AS A GAME IN YOUR STEAM LIBRARY. It is not a stand alone game, and running it as a game will prevent it from working as intended. It must be run from your system so it can initialise as an OpenVR overlay app.
 
-You should not run multiple instances of this app as it has hard coded overlay keys. Close all duplicate instances. (If there is a use case for this please submit and issue and explain)
+You should not run multiple instances of this app as it has hard coded overlay keys. Close all duplicate instances. (If there is a use case for this please submit an issue and explain)
 
 There is a directory within the app’s root directory called ‘Image Masks’ which can be modified or added to. Please see the section ‘Modify the Masks’.
 
