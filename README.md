@@ -50,6 +50,8 @@ For single masks you may name the files in any way you wish. For example a_rando
 All colours and transparency within the .png will be rendered, so ensure your source images have all of the desired values. The overall transparency of the masks can be changed within the settings window.
 
 # Errors
+NOTE there are OpenVR error codes provided alongside most errors.
+
 ### [E:0] No HMD / SteamVR not running
 You must ensure SteamVR is running before opening the app. You must ensure an HMD is connected before running the app.
 
@@ -91,6 +93,9 @@ If not running twice:
 
 1. Restart SteamVR.
 2. Re-run the app.
+
+# Known Issues
+If you launch the app multiple times before pinning the desktop window, selecting the duplicate window will cause undefined behaviour within the SteamVR dashboard.
 
 # Notes on Cross Platform Versions
 I wrote this app in cpp, and gave up due to the UI requirements. I then moved to QT (major issues), and then to Avalonia (window rendering disallows SteamVR window mgr to see them). I considered MAUI but it lacks Linux build support and requires packaged releases. If you wish to help port this to Linux please feel free to fork and improve. I will probably work on the cpp version as a minimalist app with config files instead of a UI; but for now it is removed.
