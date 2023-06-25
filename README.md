@@ -95,7 +95,7 @@ If not running twice:
 2. Re-run the app.
 
 # Known Issues
-If you launch the app multiple times before pinning the desktop window, selecting the duplicate window will cause undefined behaviour within the SteamVR dashboard.
+If you launch the app multiple times before pinning the desktop window within the SteamVR dashboard, adding the app window will cause undefined behaviour within the SteamVR dashboard.
 
 # Notes on Cross Platform Versions
 I wrote this app in cpp, and gave up due to the UI requirements. I then moved to QT (major issues), and then to Avalonia (window rendering disallows SteamVR window mgr to see them). I considered MAUI but it lacks Linux build support and requires packaged releases. If you wish to help port this to Linux please feel free to fork and improve. I will probably work on the cpp version as a minimalist app with config files instead of a UI; but for now it is removed.
