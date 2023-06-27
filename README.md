@@ -60,12 +60,12 @@ Solution:
 1. Ensure SteamVR is working with an HMD connected. 
 2. Re-run the app.
 
-### [E:1] OpenVR overlay app failed
-The OpenVR overlay app initialisation has failed.
+### [E:1] OpenVR overlay app failed / No HMD
+The OpenVR overlay app initialisation has failed. You must ensure an HMD is connected before running the app.
 
 Solution: 
 
-1. Restart SteamVR.
+1. Ensure SteamVR is working with an HMD connected. 
 2. Re-run the app.
 
 ### [E:2] Overlays error / Running twice
