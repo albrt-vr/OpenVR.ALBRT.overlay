@@ -50,7 +50,7 @@ For single masks you may name the files in any way you wish. For example a_rando
 All colours and transparency within the .png will be rendered, so ensure your source images have all of the desired values. The overall transparency of the masks can be changed within the settings window.
 
 # Errors
-NOTE there are OpenVR error codes provided alongside most errors.
+NOTE there are OpenVR error names provided alongside most errors. Make sure you note them as well as these error codes.
 
 ### [E:0] No HMD / SteamVR not running
 You must ensure SteamVR is running before opening the app. You must ensure an HMD is connected before running the app.
