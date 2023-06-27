@@ -52,7 +52,7 @@ All colours and transparency within the .png will be rendered, so ensure your so
 # Errors
 NOTE there are OpenVR error names provided alongside most errors. Make sure you note them as well as these error codes.
 
-### [E:0] No HMD / SteamVR not running
+### [E:0] SteamVR not running / No HMD
 You must ensure SteamVR is running before opening the app. You must ensure an HMD is connected before running the app.
 
 Solution: 
