@@ -41,7 +41,7 @@ There is a directory within the app’s root directory called ‘Image Masks’ 
 To open the settings window within VR; open the SteamVR dashboard, press [window icon] 'Desktops' then in the bottom right [(+) circled plus icon] 'Add View'. You may then pin the UI to your controller by pressing the controller icons, or place the window within the VR world by holding on the [+ cross arrows icon] and dragging it around. I suggest placing the UI behind you within the scene.
 
 # Modify the Masks
-You must use a .png (32 bit, ie with transparency) and I advise a resolution of 2048 or 4096 squared. Non square images will result in undefined and broken behaviour within the render. For clarity, a square image means one with an equal width and height, ie 4096x4096px.
+You must use a .png (32 bit, ie with transparency) and I advise a resolution of 4096px squared. Non square images will result in undefined and broken behaviour within the render. For clarity, a square image means one with an equal width and height, ie 4096x4096px.
 
 You must name mask pairs with the same base filename, and add a suffix of .a and .b to each filename. For example cat.a.png & cat.b.png. These will then be shown as a mask pair within the settings window. Mask pairs will start rendering mask ‘a’ on the left, and mask ‘b’ on the right. Press the ‘switch eyes’ option in the settings window to change this. If you wish to permanently switch this, simply rename the suffixes on the mask pair, ie a->b and b->a.
 
