@@ -120,7 +120,11 @@ namespace ALBRT.overlay.cs.Data
 
 		//
 
+		#region System Disk Fields
+
 		private static readonly string exeDir = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+
+		#endregion
 
 		#region Constant Naming Fields
 
@@ -202,6 +206,7 @@ namespace ALBRT.overlay.cs.Data
 		/// <summary>
 		/// (Sets dirty flag) The virtual distance to simulate the fog of war (stereo) overlays at
 		/// </summary>
+		[JsonProperty()]
 		public static float VirtualDistance
 		{
 			// NOTE I have removed the fog of war code until I can get everything done in OpenGL which will take some time
@@ -213,7 +218,7 @@ namespace ALBRT.overlay.cs.Data
 				VirtualDistance_dirty = true;
 			}
 		}
-		private static float virtualDistance;
+		private static float virtualDistance = 1f;
 
 		public static bool VirtualDistance_dirty
 		{
