@@ -21,7 +21,7 @@ uniform float time;
 uniform int maskType; // ALBRT.overlay.cs.Data Enum MaskType
 uniform int eye; // ALBRT.overlay.cs.Data Enum Eye
 
-// here a 'slice' is a stepped segment of 0-1, so each slice contains a slat and a gap
+// here a 'slice' is a stepped segment, so each slice contains a slat and a gap
 uniform float slatHeight; // % of the slice that is the slat vs gap
 uniform float sliceHeight; // % of the viewport that a slice fills - lower means more slices to fill the viewport
 uniform float sliceOffset; // % offset
@@ -50,8 +50,8 @@ void main()
 
     if (maskType == 2) // PATCH
     {
-        uv -= vec2(0.25, 0.5); // centre left
-        uv.x *= 2.; // we are rendering double wide
+        uv -= vec2(0.25, 0.5); // centre of  the left hand side
+        uv.x *= 2.; // we are rendering double wide stereo
 
         if (uv.x < safeU) // discard the right hand of the texture - plus a little gutter due to UV leaking in stereo textures
         {
@@ -92,6 +92,9 @@ void main()
                 if (eye == 3) // BOTH
                 {
                     outColorLeft = vec4(patchColour.xyz * circle, circle);
+//                    outColorRight = vec4(patchColour.xyz * circle, circle);
+                    // NOTE I am very aware of how confusing this is when a user does not clock the eye rendering setting - so I decided to render an inverted patch in B
+                    // TODO I think the UX can be improved by going back to the A/B render LEFT/RIGHT eye labelling
                     outColorRight = vec4(patchColour.xyz * icircle, icircle); // inverted
                 }
             }
