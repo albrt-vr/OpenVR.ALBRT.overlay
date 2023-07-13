@@ -181,6 +181,13 @@ namespace ALBRT.overlay.cs.Data
 
 		//
 
+		#region Master Setting Properties
+
+		[JsonProperty()]
+		public static bool ImageModeActive { get; private set; } // activates image mode, where the a/b images from disk are used and never overwritten or changed (except alpha)
+
+		#endregion
+
 		#region Public Dirty Flag Properties
 
 		/// <summary>
