@@ -12,7 +12,10 @@
     <None Include="$(MSBuildThisFileDirectory)ALBRT.overlay\LICENSE">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="$(MSBuildThisFileDirectory)ImageMasks\loading.png">
+    <None Include="$(MSBuildThisFileDirectory)ImageMasks\b.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)ImageMasks\a.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="$(MSBuildThisFileDirectory)Shaders\Overlays3D.frag">
