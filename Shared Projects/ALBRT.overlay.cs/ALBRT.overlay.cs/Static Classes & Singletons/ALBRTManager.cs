@@ -213,8 +213,8 @@ namespace ALBRT.overlay.cs
 			OpenVRIsDashboardOpen = OpenVR.Overlay.IsDashboardVisible();
 
 			// create eye overlays
-			if (!EyeOverlayCreate(ref left, EyeOverlays.leftKey, EyeOverlays.leftName, leftTransform, Eye.LEFT)) return;
-			if (!EyeOverlayCreate(ref right, EyeOverlays.rightKey, EyeOverlays.rightName, rightTransform, Eye.RIGHT)) return;
+			if (!EyeOverlayCreate(ref left, EyeOverlays.leftKey, EyeOverlays.leftName, Eye.LEFT)) return;
+			if (!EyeOverlayCreate(ref right, EyeOverlays.rightKey, EyeOverlays.rightName, Eye.RIGHT)) return;
 			openVROverlaysCreated = true;
 
 			// check eye transforms - this will set the transforms as the initial IPD cannot be X default so the transform will show dirty on init
@@ -501,7 +501,7 @@ namespace ALBRT.overlay.cs
 		/// </summary>
 		private static unsafe void GLStart()
 		{
-			if (startedGL) return;
+			if (startedGL || EyeOverlays.ImageModeActive) return;
 
 			GLFW.Init();
 
@@ -628,7 +628,7 @@ namespace ALBRT.overlay.cs
 		/// </summary>
 		private static unsafe void GLOverlaysUpdate()
 		{
-			if (!startedGL || !openVROverlaysCreated) return;
+			if (!startedGL || !openVROverlaysCreated || EyeOverlays.ImageModeActive) return;
 
 			// set rendering destination to our offscreen buffer
 			GL.BindFramebuffer(FramebufferTarget.Framebuffer, frameBufferID);
@@ -892,7 +892,7 @@ namespace ALBRT.overlay.cs
 		/// <summary>
 		/// Create an eye overlay
 		/// </summary>
-		private static bool EyeOverlayCreate(ref ulong handle, string key, string name, HmdMatrix34_t transform, Eye eye)
+		private static bool EyeOverlayCreate(ref ulong handle, string key, string name, Eye eye)
 		{
 			if (handle == 0) handle = (ulong)Instance.Rng.NextInt64(); // generate a new random handle
 
@@ -915,7 +915,7 @@ namespace ALBRT.overlay.cs
 			OpenVR.Overlay.SetOverlayFlag(handle, (eye == Eye.RIGHT) ? VROverlayFlags.SideBySide_Crossed : VROverlayFlags.SideBySide_Parallel, true);
 			OpenVR.Overlay.SetOverlayFlag(handle, VROverlayFlags.IsPremultiplied, true);
 			OpenVR.Overlay.SetOverlayWidthInMeters(handle, EyeOverlays.w);
-			OpenVR.Overlay.SetOverlayFromFile(handle, (eye == Eye.RIGHT) ? exeDir + $"/ImageMasks/loading.png" : exeDir + $"/ImageMasks/loading.png");
+			OpenVR.Overlay.SetOverlayFromFile(handle, (eye == Eye.RIGHT) ? exeDir + $"/ImageMasks/b.png" : exeDir + $"/ImageMasks/a.png");
 			// the transform relative to HMD will be set in the eye transform checks/set
 
 			return true;
