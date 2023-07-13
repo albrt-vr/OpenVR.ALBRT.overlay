@@ -24,7 +24,7 @@ This app will never be distributed by us on any other platform or installer. If 
 This app is licensed under the MIT licence, and uses OpenVR which is under the BSD-3-Clause licence. If you make substantial improvements we ask kindly that you fork from this repository and contribute your changes via a pull request (You are under no obligation to do this under the aforementioned licences, it is a request only).
 
 # How To Use This App
-Download the newest release zip from [Releases page](https://github.com/albrt-vr/OpenVR.ALBRT.overlay/releases), or the Builds directory, extract it somewhere, make sure SteamVR is running, then run ALBRT.overlay.win64.exe; it is advisable to have a shortcut somewhere easily accessible from within the VR desktop view, as this app must be started from outside of Steam.
+Download the newest release zip from the [Releases page](https://github.com/albrt-vr/OpenVR.ALBRT.overlay/releases), or the Builds directory, extract it somewhere, make sure SteamVR is running, then run ALBRT.overlay.win64.exe; it is advisable to have a shortcut somewhere easily accessible from within the VR desktop view, as this app must be started from outside of Steam.
 
 If you are running the app for the first time you will be asked to download the new windows app runtime. If you have issues with windows not downloading it when you accept, it can be found here: 
 https://aka.ms/windowsappsdk/1.3/1.3.230602002/windowsappruntimeinstall-x64.exe
