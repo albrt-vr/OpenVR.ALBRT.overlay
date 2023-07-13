@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="ALBRT.overlay.win64.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ALBRT.overlay.win64"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Visibility="Visible" x:Name="Main">
+
+        <ScrollViewer x:Name="ScrollablePanel" Padding="30,0,30,0">
+            <StackPanel x:Name="Settings">
+
+                <StackPanel x:Name="UniversalSettings" Tag="block" Visibility="Collapsed">
+
+                    <TextBlock
+                        x:Name="MainTitle"
+                        Text="Universal Settings"
+                        Margin="0,30,0,1"
+                        FontSize="25"
+                        FontWeight="Bold"
+                        TextWrapping="WrapWholeWords"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"/>
+
+                    <TextBlock
+                        x:Name="MainInfo"
+                        Visibility="Collapsed"
+                        Margin="0,12,0,0"
+                        FontSize="12"
+                        FontWeight="Medium"
+                        TextWrapping="WrapWholeWords"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left">
+                        <Run>
+                            
+                        </Run>
+                    </TextBlock>
+                    <AppBarSeparator Margin="0,0,0,20"/>
+
+                    <StackPanel
+                        Orientation="Horizontal"
+                        VerticalAlignment="Top"
+                        Margin="0,0,0,1"
+                        HorizontalAlignment="Left">
+                        
+                        <ToggleButton x:Name="OverlaysOn" Click="OnOverlaysOn" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,20,0">
+                            <FontIcon Glyph="&#xE81E;" />
+                            <ToolTipService.ToolTip>
+                                <ToolTip Content="Overlays On" VerticalOffset="20"/>
+                            </ToolTipService.ToolTip>
+                        </ToggleButton>
+                        <ToggleButton x:Name="SwitchEyes" Click="OnSwitchEyes" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,20,0">
+                            <FontIcon Glyph="&#xE8AB;" />
+                            <ToolTipService.ToolTip>
+                                <ToolTip Content="Switch Eyes" VerticalOffset="20"/>
+                            </ToolTipService.ToolTip>
+                        </ToggleButton>
+                        <ToggleButton x:Name="AlphaT" Click="OnAlphaT" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,20,0">
+                            <FontIcon Glyph="&#xE916;" />
+                            <ToolTipService.ToolTip>
+                                <ToolTip Content="Alpha × Time" VerticalOffset="20"/>
+                            </ToolTipService.ToolTip>
+                        </ToggleButton>
+                        <ToggleButton x:Name="HideInDash" Click="OnHideInDash" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,20,0">
+                            <FontIcon Glyph="&#xE75B;" />
+                            <ToolTipService.ToolTip>
+                                <ToolTip Content="Hide In SteamVR Dashboard" VerticalOffset="20"/>
+                            </ToolTipService.ToolTip>
+                        </ToggleButton>
+                        
+                    </StackPanel>
+
+                    <TextBlock
+                        Tag="INFO"
+                        Visibility="Collapsed"
+                        Margin="0,12,0,0"
+                        FontSize="12"
+                        FontWeight="Medium"
+                        TextWrapping="WrapWholeWords"
+                        IsTextSelectionEnabled="True"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left">
+                            <Run>
+                                Overlays On: Turns the overlays on/off in OpenVR (does not affect rendering)
+                            </Run>
+                            <LineBreak/>
+                            <Run>
+                                Switch Eyes: Switches what is rendered in each eye.
+                            </Run>
+                            <LineBreak/>
+                            <Run>
+                                Alpha × Time: Fades the overlays in and out over time.
+                            </Run>
+                            <LineBreak/>
+                            <Run>
+                                Hide In SteamVR Dashboard: Whether to hide the overlays while viewing the dashboard.
+                            </Run>
+                            <LineBreak/>
+                            <LineBreak/>
+                            <Run>
+                                (These quick settings are also visible on the left hand menu at the bottom)
+                            </Run>
+                    </TextBlock>
+                    <MenuFlyoutSeparator Margin="0,15,0,15"/>
+
+                    <Slider 
+                        x:Name="AlphaSlider"
+                        Header="Master Overlay Alpha (0:transparent  0.5:translucent  1:opaque)"
+                        ValueChanged="OnAlphaSlider_ValueChanged"
+                        Width="800"
+                        TickFrequency="0.5"
+                        StepFrequency="0.001"
+                        Value="0.666"
+                        Maximum="1"
+                        Minimum="0"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Margin="0,0,0,1"
+                        TickPlacement="Outside"/>
+
+                    <TextBlock
+                        Tag="INFO"
+                        Visibility="Collapsed"
+                        Margin="0,12,0,0"
+                        FontSize="12"
+                        FontWeight="Medium"
+                        TextWrapping="WrapWholeWords"
+                        IsTextSelectionEnabled="True"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left">
+                            <Run>
+                                The master translucency of BOTH overlays in OpenVR when Alpha × Time is off. Do not use this to hide the overlays, instead use the "Overlays On" button.
+                            </Run>
+                    </TextBlock>
+                    <MenuFlyoutSeparator Margin="0,15,0,15"/>
+
+                    <RadioButtons
+                        x:Name="EyeRadioButtons"
+                        Margin="0,0,0,1"
+                        SelectedIndex="3"
+                        MaxColumns="10"
+                        Header="Master Eye Rendering Control (this affects all overlay rendering)"
+                        SelectionChanged="OnEyeRadioButtons_SelectionChanged">
+                        <x:String>LEFT eye only</x:String>
+                        <x:String>RIGHT eye only</x:String>
+                        <x:String>BOTH eyes</x:String>
+                    </RadioButtons>
+
+                    <TextBlock
+                        Tag="INFO"
+                        Visibility="Collapsed"
+                        Margin="0,12,0,0"
+                        FontSize="12"
+                        FontWeight="Medium"
+                        TextWrapping="WrapWholeWords"
+                        IsTextSelectionEnabled="True"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left">
+                            <Run>
+                                Choose which overlays to render. This will affect all rendering and should only be set when you wish to turn one overlay off entirely.
+                                The way the reciprocal rendering works is that the positive image is always initially rendered in eye A (left) so this may be confusing.
+                            </Run>
+                    </TextBlock>
+                    <MenuFlyoutSeparator Margin="0,15,0,15"/>
+
+                    <Slider 
+                        x:Name="AlphaTSpeedSlider"
+                        Header="Alpha × Time Speed (seconds)"
+                        ValueChanged="OnAlphaTSpeedSlider_ValueChanged"
+                        Width="800"
+                        TickFrequency="10"
+                        StepFrequency="1"
+                        Value="0.666"
+                        Maximum="60"
+                        Minimum="2"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Margin="0,0,0,1"
+                        TickPlacement="Outside"/>
+
+                    <TextBlock
+                        Tag="INFO"
+                        Visibility="Collapsed"
+                        Margin="0,12,0,0"
+                        FontSize="12"
+                        FontWeight="Medium"
+                        TextWrapping="WrapWholeWords"
+                        IsTextSelectionEnabled="True"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left">
+                            <Run>
+                                The speed of the Alpha × Time animation; which will gradually fade the overlays in and out. This is the duration of the animation curve in seconds.
+                            </Run>
+                    </TextBlock>
+                    <MenuFlyoutSeparator Margin="0,15,0,15"/>
+
+                    <RadioButtons
+                        x:Name="AlphaTTypeRadioButtons"
+                        Margin="0,0,0,1"
+                        SelectedIndex="3"
+                        MaxColumns="10"
+                        Header="Alpha × Time Animation Type (the way the fade in/out looks)"
+                        SelectionChanged="OnAlphaTTypeRadioButtons_SelectionChanged">
+                        <x:String>Zero to One</x:String>
+                        <x:String>One to Zero</x:String>
+                        <x:String>PingPong</x:String>
+                    </RadioButtons>
+
+                    <TextBlock
+                        Tag="INFO"
+                        Visibility="Collapsed"
+                        Margin="0,12,0,0"
+                        FontSize="12"
+                        FontWeight="Medium"
+                        TextWrapping="WrapWholeWords"
+                        IsTextSelectionEnabled="True"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left">
+                            <Run>
+                                Choose which animation to use for Alpha × Time; which will gradually fade the overlays in and out.
+                            </Run>
+                    </TextBlock>
+                    <MenuFlyoutSeparator Margin="0,15,0,15"/>
+
+                </StackPanel>
+
+                <StackPanel x:Name="PatchSettings" Tag="block" Visibility="Collapsed">
+
+                    <TextBlock
+                        x:Name="PatchTitle"
+                        Text="Patch Overlay Settings"
+                        Margin="0,0,0,1"
+                        FontSize="25"
+                        FontWeight="Bold"
+                        TextWrapping="WrapWholeWords"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"/>
+
+                    <TextBlock
+                        Tag="INFO"
+                        Visibility="Collapsed"
+                        Margin="0,12,0,0"
+                        FontSize="12"
+                        FontWeight="Medium"
+                        TextWrapping="WrapWholeWords"
+                        IsTextSelectionEnabled="True"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left">
+                            <Run>
+                                Patch overlay renders a 2D layer, that can also be translucent, on top of one or both eyes; increasing the challenge of the game being played in VR.
+                            </Run>
+                    </TextBlock>
+                    <AppBarSeparator Margin="0,0,0,20"/>
+
+                    <ColorPicker
+                          x:Name="PatchColour"
+                          ColorChanged="OnPatchColour_ColorChanged"
+                          Margin="0,0,0,1"
+                          ColorSpectrumShape="Ring"
+                          IsMoreButtonVisible="True"
+                          IsColorSliderVisible="True"
+                          IsColorChannelTextInputVisible="True"
+                          IsHexInputVisible="True"
+                          IsAlphaEnabled="False"
+                          IsAlphaSliderVisible="False"
+                          VerticalAlignment="Top"
+                          HorizontalAlignment="Left"
+                          IsAlphaTextInputVisible="True" />
+
+                    <TextBlock
+                        Tag="INFO"
+                        Visibility="Collapsed"
+                        Margin="0,12,0,0"
+                        FontSize="12"
+                        FontWeight="Medium"
+                        TextWrapping="WrapWholeWords"
+                        IsTextSelectionEnabled="True"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left">
+                            <Run>
+                                Choose the colour for the patch overlay.
+                            </Run>
+                    </TextBlock>
+                    <MenuFlyoutSeparator Margin="0,15,0,15"/>
+
+                    <RadioButtons
+                        x:Name="PatchTypeRadioButtons"
+                        Margin="0,0,0,1"
+                        SelectedIndex="2"
+                        MaxColumns="10"
+                        Header="Patch Overlay Type"
+                        SelectionChanged="OnPatchTypeRadioButtons_SelectionChanged">
+                        <x:String>Flat</x:String>
+                        <x:String>Radial</x:String>
+                    </RadioButtons>
+
+                    <TextBlock
+                        Tag="INFO"
+                        Visibility="Collapsed"
+                        Margin="0,12,0,0"
+                        FontSize="12"
+                        FontWeight="Medium"
+                        TextWrapping="WrapWholeWords"
+                        IsTextSelectionEnabled="True"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left">
+                            <Run>
+                                Choose which patch overlay type to use. Flat fills the eye, radial is a circle from the centre.
+                            </Run>
+                    </TextBlock>
+                    <MenuFlyoutSeparator Margin="0,15,0,15"/>
+
+                    <Slider 
+                        x:Name="PatchRadialSizeSlider"
+                        Header="Radial Patch Size"
+                        ValueChanged="OnPatchRadialSizeSlider_ValueChanged"
+                        Width="800"
+                        TickFrequency="0.1"
+                        StepFrequency="0.001"
+                        Value="0.666"
+                        Maximum="1"
+                        Minimum="0"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Margin="0,0,0,1"
+                        TickPlacement="Outside"/>
+
+                    <TextBlock
+                        Tag="INFO"
+                        Visibility="Collapsed"
+                        Margin="0,12,0,0"
+                        FontSize="12"
+                        FontWeight="Medium"
+                        TextWrapping="WrapWholeWords"
+                        IsTextSelectionEnabled="True"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left">
+                            <Run>
+                                The size of the radial circle.
+                            </Run>
+                    </TextBlock>
+                    <MenuFlyoutSeparator Margin="0,15,0,15"/>
+
+                    <Slider 
+                        x:Name="PatchRadialSoftnessSlider"
+                        Header="Radial Patch Softness"
+                        ValueChanged="OnPatchRadialSoftnessSlider_ValueChanged"
+                        Width="800"
+                        TickFrequency="0.1"
+                        StepFrequency="0.001"
+                        Value="0.666"
+                        Maximum="1"
+                        Minimum="0"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Margin="0,0,0,1"
+                        TickPlacement="Outside"/>
+
+                    <TextBlock
+                        Tag="INFO"
+                        Visibility="Collapsed"
+                        Margin="0,12,0,0"
+                        FontSize="12"
+                        FontWeight="Medium"
+                        TextWrapping="WrapWholeWords"
+                        IsTextSelectionEnabled="True"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left">
+                            <Run>
+                                The softness of the radial circle edge.
+                            </Run>
+                    </TextBlock>
+                    <MenuFlyoutSeparator Margin="0,15,0,15"/>
+
+                </StackPanel>
+
+                <StackPanel x:Name="SlatSettings" Tag="block" Visibility="Collapsed">
+
+                    <TextBlock
+                        x:Name="SlatTitle"
+                        Text="Slat Overlay Settings"
+                        Margin="0,0,0,1"
+                        FontSize="25"
+                        FontWeight="Bold"
+                        TextWrapping="WrapWholeWords"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"/>
+
+                    <TextBlock
+                        Tag="INFO"
+                        Visibility="Collapsed"
+                        Margin="0,12,0,0"
+                        FontSize="12"
+                        FontWeight="Medium"
+                        TextWrapping="WrapWholeWords"
+                        IsTextSelectionEnabled="True"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left">
+                            <Run>
+                                Slat overlay renders inverted 2D slats in each eye, that can also be translucent, blocking parts of the view in one eye but not the other; increasing the challenge of the game being played in VR.
+                            </Run>
+                    </TextBlock>
+                    <AppBarSeparator Margin="0,0,0,20"/>
+
+                    <ColorPicker
+                          x:Name="SlatColour"
+                          ColorChanged="OnSlatColour_ColorChanged"
+                          ColorSpectrumShape="Ring"
+                          IsMoreButtonVisible="True"
+                          IsColorSliderVisible="True"
+                          IsColorChannelTextInputVisible="True"
+                          IsHexInputVisible="True"
+                          IsAlphaEnabled="False"
+                          IsAlphaSliderVisible="False"
+                          VerticalAlignment="Top"
+                          HorizontalAlignment="Left"
+                          Margin="0,0,0,1"
+                          IsAlphaTextInputVisible="True" />
+
+                    <TextBlock
+                        Tag="INFO"
+                        Visibility="Collapsed"
+                        Margin="0,12,0,0"
+                        FontSize="12"
+                        FontWeight="Medium"
+                        TextWrapping="WrapWholeWords"
+                        IsTextSelectionEnabled="True"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left">
+                            <Run>
+                                Choose the colour for the slat overlay.
+                            </Run>
+                    </TextBlock>
+                    <MenuFlyoutSeparator Margin="0,15,0,15"/>
+
+                    <Slider 
+                        x:Name="SlatSliceHeightSlider"
+                        Header="Slat Slice Height"
+                        ValueChanged="OnSlatSliceHeightSlider_ValueChanged"
+                        Width="800"
+                        TickFrequency="0.1"
+                        StepFrequency="0.001"
+                        Value="0.666"
+                        Maximum="1"
+                        Minimum="0"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Margin="0,0,0,1"
+                        TickPlacement="Outside"/>
+
+                    <TextBlock
+                        Tag="INFO"
+                        Visibility="Collapsed"
+                        Margin="0,12,0,0"
+                        FontSize="12"
+                        FontWeight="Medium"
+                        TextWrapping="WrapWholeWords"
+                        IsTextSelectionEnabled="True"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left">
+                            <Run>
+                                The percentage height of the slices (one slat + one gap combo) in the viewport. A lower height means more slices to fill up the viewport. (Affects the left eye render - when not switched)
+                            </Run>
+                    </TextBlock>
+                    <MenuFlyoutSeparator Margin="0,15,0,15"/>
+                    
+                    <Slider 
+                        x:Name="SlatHeightSlider"
+                        Header="Slat Height"
+                        ValueChanged="OnSlatHeightSlider_ValueChanged"
+                        Width="800"
+                        TickFrequency="0.5"
+                        StepFrequency="0.001"
+                        Value="0.666"
+                        Maximum="1"
+                        Minimum="0"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Margin="0,0,0,1"
+                        TickPlacement="Outside"/>
+
+                    <TextBlock
+                        Tag="INFO"
+                        Visibility="Collapsed"
+                        Margin="0,12,0,0"
+                        FontSize="12"
+                        FontWeight="Medium"
+                        TextWrapping="WrapWholeWords"
+                        IsTextSelectionEnabled="True"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left">
+                            <Run>
+                                The percentage of a slice (one slat + one gap combo) that the slat takes up vs the gap. (Affects the left eye render - when not switched)
+                            </Run>
+                    </TextBlock>
+                    <MenuFlyoutSeparator Margin="0,15,0,15"/>
+
+
+                    <Slider 
+                        x:Name="SlatOffsetSlider"
+                        Header="Slat Offset"
+                        ValueChanged="OnSlatOffsetSlider_ValueChanged"
+                        Width="800"
+                        TickFrequency="0.5"
+                        StepFrequency="0.001"
+                        Value="0.666"
+                        Maximum="1"
+                        Minimum="0"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Margin="0,0,0,1"
+                        TickPlacement="Outside"/>
+
+                    <TextBlock
+                        Tag="INFO"
+                        Visibility="Collapsed"
+                        Margin="0,12,0,0"
+                        FontSize="12"
+                        FontWeight="Medium"
+                        TextWrapping="WrapWholeWords"
+                        IsTextSelectionEnabled="True"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left">
+                            <Run>
+                                An offset to move the slats up and down to suit your needs.
+                            </Run>
+                    </TextBlock>
+                    <MenuFlyoutSeparator Margin="0,15,0,15"/>
+
+                </StackPanel>
+
+                <StackPanel
+                    x:Name="FogSettings"
+                    Tag="block"
+                    Visibility="Collapsed">
+
+                    <TextBlock
+                        x:Name="FogTitle"
+                        Text="Fog Overlay Settings"
+                        Margin="0,0,0,1"
+                        FontSize="25"
+                        FontWeight="Bold"
+                        TextWrapping="WrapWholeWords"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"/>
+
+                    <TextBlock
+                        Tag="INFO"
+                        Visibility="Collapsed"
+                        Margin="0,12,0,0"
+                        FontSize="12"
+                        FontWeight="Medium"
+                        TextWrapping="WrapWholeWords"
+                        IsTextSelectionEnabled="True"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left">
+                           <Run>
+                                NOTE: COMING SOON™ Fog of war overlays involve a lot more work than the 2D overlays. They will not be added for a while.
+                            </Run>
+                        <LineBreak/>
+                        <LineBreak/>
+                        <Run>
+                            Fog of war overlay shows a 3D scene overlay, with each eye able to selectively render the scene.
+                            These scenes should block an area in one eye and not block that area in the other.
+                            
+                            They can be animated to move around over time; increasing the challenge of the game being played in VR.
+                        </Run>
+                    </TextBlock>
+                    <AppBarSeparator Margin="0,0,0,20"/>
+
+                </StackPanel>
+
+                <StackPanel x:Name="AllSettingsNote" Tag="block" Visibility="Collapsed">
+                    <TextBlock
+                        Margin="0,0,0,10"
+                        FontSize="16"
+                        FontWeight="Bold"
+                        TextWrapping="WrapWholeWords"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left">
+                        <Run>
+                           🡨 &#160;&#160;&#160; To view all settings press the cog icon at the bottom of the left hand menu
+                        </Run>
+                    </TextBlock>
+                </StackPanel>
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <!--this button will show and hide extra information about settings that would otherwise clutter the view-->
+        <ToggleButton
+            Click="OnInfo"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Right"
+            IsTabStop="True"
+            TabIndex="0"
+            Margin="20,20,20,20">
+            <FontIcon Glyph="&#xF142;" />
+            <ToolTipService.ToolTip>
+                <ToolTip Content="Show control descriptions" VerticalOffset="20"/>
+            </ToolTipService.ToolTip>
+        </ToggleButton>
+
+        <!--this will show a string to describe the settings filter - when you enter from an overlay activation button the page will only show relevant settings-->
+        <TextBlock
+            x:Name="FilterInfo"
+            Text="Showing: All Settings"
+            Margin="0,0,15,10"
+            FontSize="12"
+            FontWeight="Light"
+            TextWrapping="NoWrap"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Right"/>
+
+    </Grid>
+</Page>

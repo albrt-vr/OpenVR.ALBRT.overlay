@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="ALBRT.overlay.win64.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid>
+
+        <!--The titlebar-->
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="28"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid x:Name="AppTitleBar">
+                <TextBlock x:Name="AppTitleText" Text="ALBRT Overlay"
+                       TextWrapping="NoWrap"
+                       Style="{StaticResource CaptionTextBlockStyle}" 
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"
+                       Margin="12,0,0,0"/>
+
+                <TextBlock x:Name="AppTitleState" Text="..."
+                       TextWrapping="NoWrap"
+                       Style="{StaticResource CaptionTextBlockStyle}" 
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,0"/>
+            </Grid>
+        </Grid>
+
+        <!--A splash to contain critical feedback exclusive of the app UI-->
+
+        <Grid
+            x:Name="Splash">
+
+            <TextBlock 
+                x:Name="SplashMessage"
+                Text="Starting..."
+                TextWrapping="WrapWholeWords"
+                IsTextSelectionEnabled="True"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Margin="20,20,20,20"/>
+
+        </Grid>
+
+        <!--The actual app view - based on the newest winui3 samples for small window navigation-->
+
+        <NavigationView
+            x:Name="MasterView"
+            IsTabStop="True"
+            ItemInvoked="OnMasterViewInvoked"
+            Loaded="OnMasterViewLoaded"
+            SelectionChanged="OnMasterViewSelectionChanged"
+            IsSettingsVisible="True"
+            IsBackButtonVisible="Collapsed"
+            IsBackEnabled="False"
+            Header=""
+            AlwaysShowHeader="False"
+            PaneTitle=""
+            PaneDisplayMode="Left"
+            SelectionFollowsFocus="Disabled"
+            IsPaneOpen="False"
+            Margin="0,28,0,28">
+
+            <NavigationView.Resources>
+                <SolidColorBrush  Color="#42FFFFFF" x:Key="NavigationViewItemBackgroundSelected"/>
+                <SolidColorBrush Color="#60FFFFFF" x:Key="NavigationViewItemBackgroundSelectedPointerOver"/>
+                <SolidColorBrush Color="#0071A5" x:Key="NavigationViewItemBackgroundPointerOver"/>
+            </NavigationView.Resources>
+
+            <NavigationView.MenuItems>
+
+                <NavigationViewItemHeader Content="Select Overlay Method"/>
+
+                <NavigationViewItem Content="Patch Overlay" Tag="PATCH" x:Name="Open_PatchOverlaySettings">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xF140;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <NavigationViewItem Content="Slat Overlay" Tag="SLAT" x:Name="Open_SlatOverlaySettings">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE745;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <!--<NavigationViewItem Content="Fog Overlay" Tag="FOG" x:Name="Open_FogOverlaySettings">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE753;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>-->
+            </NavigationView.MenuItems>
+
+            <NavigationView.FooterMenuItems>
+
+                <NavigationViewItemHeader Content="Quick Settings"/>
+
+                <NavigationViewItem Content="Overlays On" Tag="" x:Name="Toggle_OverlaysVisible" SelectsOnInvoked="False" IsTabStop="True">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xEA6A;" x:Name="Toggle_Icon_OverlaysVisible"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <NavigationViewItem Content="Switch Eyes" Tag="" x:Name="Toggle_SwitchedEyes" SelectsOnInvoked="False">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xEA6A;"  x:Name="Toggle_Icon_SwitchedEyes"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <NavigationViewItem Content="Alpha × Time" Tag="" x:Name="Toggle_AlphaT" SelectsOnInvoked="False">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xEA6A;"  x:Name="Toggle_Icon_AlphaT"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <NavigationViewItem Content="Hide In SteamVR Dashboard" Tag="" x:Name="Toggle_OverlaysVisibleInOVRDash" SelectsOnInvoked="False">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xEA6A;"  x:Name="Toggle_Icon_OverlaysVisibleInOVRDash"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <NavigationViewItemSeparator/>
+
+            </NavigationView.FooterMenuItems>
+
+            <Frame x:Name="ContentFrame">
+                <Frame.ContentTransitions>
+                    <TransitionCollection>
+                        <NavigationThemeTransition/>
+                    </TransitionCollection>
+                </Frame.ContentTransitions>
+            </Frame>
+
+        </NavigationView>
+
+        <!--The infobar at the bottom for good VR viewing (contains some quick info on the app state and VR state)-->
+
+        <Grid x:Name="AppInfoBar"
+                VerticalAlignment="Bottom"
+                Height="28">
+
+            <TextBlock x:Name="AppInfoConsole" Text="..."
+                    TextWrapping="NoWrap"
+                    Style="{StaticResource CaptionTextBlockStyle}" 
+                    Foreground="#55FFFFFF"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    Margin="0,0,12,0"/>
+
+            <TextBlock x:Name="AppInfoStates"
+                TextWrapping="NoWrap"
+                IsTextSelectionEnabled="True"
+                Style="{StaticResource CaptionTextBlockStyle}"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Margin="0,0,0,0">
+                    
+                    <!--pad with some whitespace to get rid of the annoying copy cursor frustration - sadly only seems to work at start of text-->
+                    <Run Text="   "/>
+                    <Run x:Name="IPDLabel" FontWeight="Bold">IPD: </Run>
+                    <Run x:Name="IPDValue"/>
+                    <Run>&#160;&#160;•&#160;&#160;</Run>
+                
+                    <Run x:Name="EyeRenderingLabel" FontWeight="Bold">Rendering: </Run>
+                    <Run x:Name="EyeRenderingValue"/>
+                    <Run>&#160;&#160;•&#160;&#160;</Run>
+                
+                    <Run x:Name="OverlaysOnLabel" FontWeight="Bold">Overlays: </Run>
+                    <Run x:Name="OverlaysOnValue"/>
+                    <Run>&#160;&#160;•&#160;&#160;</Run>
+                
+                    <Run x:Name="OverlaysHiddenLabel" FontWeight="Bold">Hidden: </Run>
+                    <Run x:Name="OverlaysHiddenValue"/>
+                    <Run>&#160;&#160;•&#160;&#160;</Run>
+                
+                    <Run x:Name="InDashLabel" FontWeight="Bold">Dash: </Run>
+                    <Run x:Name="InDashValue"/>
+                    <Run>&#160;&#160;•&#160;&#160;</Run>
+                
+                    <Run x:Name="EyesSwitchedLabel" FontWeight="Bold">Switched: </Run>
+                    <Run x:Name="EyesSwitchedValue"/>
+                    <Run>&#160;&#160;•&#160;&#160;</Run>
+                
+                    <Run x:Name="AlphaTLabel" FontWeight="Bold">A×T: </Run>
+                    <Run x:Name="AlphaTValue"/>
+                    <Run>&#160;&#160;•&#160;&#160;</Run>
+                
+                    <Run x:Name="OverlayMethodLabel" FontWeight="Bold">Method: </Run>
+                    <Run x:Name="OverlayMethodValue"/>
+                    <Run Text="   "/>
+
+            </TextBlock>
+        </Grid>
+    </Grid>
+</Window>

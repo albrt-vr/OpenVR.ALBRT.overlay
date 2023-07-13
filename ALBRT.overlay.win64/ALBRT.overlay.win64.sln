@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ALBRT.overlay.win64", "ALBRT.overlay.win64\ALBRT.overlay.win64.csproj", "{F0524AA6-1401-45A6-AC8C-576EAC5A071A}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "OpenVR.api.cs", "..\Shared Projects\OpenVR.api.cs\OpenVR.api.cs\OpenVR.api.cs.shproj", "{0178EC33-3682-4CFA-95A1-46DEAEDCAA92}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ALBRT.overlay.cs", "..\Shared Projects\ALBRT.overlay.cs\ALBRT.overlay.cs\ALBRT.overlay.cs.shproj", "{FC3550D9-4A61-48CB-A828-B15F5CDF26A9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM64 = Debug|ARM64
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|ARM64 = Release|ARM64
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F0524AA6-1401-45A6-AC8C-576EAC5A071A}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{F0524AA6-1401-45A6-AC8C-576EAC5A071A}.Debug|ARM64.Build.0 = Debug|ARM64
+		{F0524AA6-1401-45A6-AC8C-576EAC5A071A}.Debug|ARM64.Deploy.0 = Debug|ARM64
+		{F0524AA6-1401-45A6-AC8C-576EAC5A071A}.Debug|x64.ActiveCfg = Debug|x64
+		{F0524AA6-1401-45A6-AC8C-576EAC5A071A}.Debug|x64.Build.0 = Debug|x64
+		{F0524AA6-1401-45A6-AC8C-576EAC5A071A}.Debug|x64.Deploy.0 = Debug|x64
+		{F0524AA6-1401-45A6-AC8C-576EAC5A071A}.Debug|x86.ActiveCfg = Debug|x86
+		{F0524AA6-1401-45A6-AC8C-576EAC5A071A}.Debug|x86.Build.0 = Debug|x86
+		{F0524AA6-1401-45A6-AC8C-576EAC5A071A}.Debug|x86.Deploy.0 = Debug|x86
+		{F0524AA6-1401-45A6-AC8C-576EAC5A071A}.Release|ARM64.ActiveCfg = Release|ARM64
+		{F0524AA6-1401-45A6-AC8C-576EAC5A071A}.Release|ARM64.Build.0 = Release|ARM64
+		{F0524AA6-1401-45A6-AC8C-576EAC5A071A}.Release|ARM64.Deploy.0 = Release|ARM64
+		{F0524AA6-1401-45A6-AC8C-576EAC5A071A}.Release|x64.ActiveCfg = Release|x64
+		{F0524AA6-1401-45A6-AC8C-576EAC5A071A}.Release|x64.Build.0 = Release|x64
+		{F0524AA6-1401-45A6-AC8C-576EAC5A071A}.Release|x64.Deploy.0 = Release|x64
+		{F0524AA6-1401-45A6-AC8C-576EAC5A071A}.Release|x86.ActiveCfg = Release|x86
+		{F0524AA6-1401-45A6-AC8C-576EAC5A071A}.Release|x86.Build.0 = Release|x86
+		{F0524AA6-1401-45A6-AC8C-576EAC5A071A}.Release|x86.Deploy.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0A3ABEE3-F276-4545-80E7-06C049E305CA}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\Shared Projects\OpenVR.api.cs\OpenVR.api.cs\OpenVR.api.cs.projitems*{0178ec33-3682-4cfa-95a1-46deaedcaa92}*SharedItemsImports = 13
+		..\Shared Projects\ALBRT.overlay.cs\ALBRT.overlay.cs\ALBRT.overlay.cs.projitems*{f0524aa6-1401-45a6-ac8c-576eac5a071a}*SharedItemsImports = 5
+		..\Shared Projects\OpenVR.api.cs\OpenVR.api.cs\OpenVR.api.cs.projitems*{f0524aa6-1401-45a6-ac8c-576eac5a071a}*SharedItemsImports = 5
+		..\Shared Projects\ALBRT.overlay.cs\ALBRT.overlay.cs\ALBRT.overlay.cs.projitems*{fc3550d9-4a61-48cb-a828-b15f5cdf26a9}*SharedItemsImports = 13
+	EndGlobalSection
+EndGlobal

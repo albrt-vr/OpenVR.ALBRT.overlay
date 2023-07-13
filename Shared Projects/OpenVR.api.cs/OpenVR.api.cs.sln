@@ -1,0 +1,18 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "OpenVR.api.cs", "OpenVR.api.cs\OpenVR.api.cs.shproj", "{0178EC33-3682-4CFA-95A1-46DEAEDCAA92}"
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {085A6DB3-BB2C-4C6B-8ABA-10BBD921BAFC}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		OpenVR.api.cs\OpenVR.api.cs.projitems*{0178ec33-3682-4cfa-95a1-46deaedcaa92}*SharedItemsImports = 13
+	EndGlobalSection
+EndGlobal
