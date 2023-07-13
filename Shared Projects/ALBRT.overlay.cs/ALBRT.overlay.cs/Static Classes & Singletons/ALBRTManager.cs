@@ -217,6 +217,10 @@ namespace ALBRT.overlay.cs
 			if (!EyeOverlayCreate(ref right, EyeOverlays.rightKey, EyeOverlays.rightName, Eye.RIGHT)) return;
 			openVROverlaysCreated = true;
 
+			// set alpha
+			EyeOverlayUpdateAlpha(left);
+			EyeOverlayUpdateAlpha(right);
+
 			// check eye transforms - this will set the transforms as the initial IPD cannot be X default so the transform will show dirty on init
 			OpenVRCheckEyeTransforms();
 
