@@ -14,10 +14,6 @@ Please read all licensing documents and files, including those in sub directorie
 
 ----
 
-**IMPORTANT:** The cross platform builds have been removed due to the effort of testing, and other reasons relating to window rendering which broke the SteamVR window manager. Scroll to the bottom to read a summary.
-
-(Note this README is synced with the staging repo so you may not yet see the content referenced within)
-
 # Notes About This App
 Windows 10+ 64 bit.
 
