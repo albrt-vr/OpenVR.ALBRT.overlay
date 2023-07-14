@@ -209,6 +209,9 @@ namespace ALBRT.overlay.cs
 			// init the OpenVR app
 			if (!OpenVRInitOverlayApp()) return;
 
+			// register the app for management from OpenVR dashboard
+			if (!OpenVRRegisterOverlayApp()) return;
+
 			// get starting system values that could affect our rendering
 			OpenVRIsDashboardOpen = OpenVR.Overlay.IsDashboardVisible();
 
@@ -1049,6 +1052,42 @@ namespace ALBRT.overlay.cs
 				});
 				return false;
 			}
+			return true;
+		}
+
+		/// <summary>
+		/// Register the app with the OpenVR server - this allows application control from within the dashboard auto launch settings
+		/// </summary>
+		private static bool OpenVRRegisterOverlayApp()
+		{
+			// example to check install before registration - we can't use this without proper install location testing (we have no installer) so leave this out for now
+			//if (OpenVR.Applications.IsApplicationInstalled("ALBRT.overlay.win64")) return true; // already iunstalled
+
+			// BUG I am aware that to remove the unlinked manifests you must remove the file, start steamvr, close steamvr, then restart steamvr, this is confusing
+			// we really have no way of knowing where the old manifest WAS in order to remove it, even if we add it on every run
+
+			// NOTE this involves changing the build directory structure to reflect a steam app - very annoying
+			// ENCLOSINGDIR (mutible) / ALBRT.overlay (const) / ALBRT.overlay.win64.exe
+			// see the hard coded value ALBRT.overlay/ALBRT.overlay.win64.exe in the manifest (SteamVR/xxx.vrmanifest)
+
+			EVRApplicationError e = OpenVR.Applications.AddApplicationManifest(exeDir + "/SteamVR/ALBRT.overlay.win64.vrmanifest", false);
+
+			if (e != EVRApplicationError.None)
+			{
+				ALBRTManagerEvent.Invoke(Instance, new ALBRTManagerEventArgs()
+				{
+					type = ALBRTManagerEventType.ALBRT_ERROR,
+					printError =
+					{
+						error = $"Application registration failed  (EVRApplicationError {e})",
+						solution = "Please re-download the app from GitHub as the VR manifest is corrupted"
+					}
+				});
+				return false;
+			}
+
+			// example to enable auto launch - DO NOT do this in our app or it will annoy the user - let them set it
+			//OpenVR.Applications.SetApplicationAutoLaunch("ALBRT.overlay.win64", true);
 			return true;
 		}
 
