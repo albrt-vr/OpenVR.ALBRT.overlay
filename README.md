@@ -33,6 +33,8 @@ https://aka.ms/windowsappsdk/1.3/1.3.230602002/windowsappruntimeinstall-x64.exe
 
 YOU SHOULD NOT ADD THIS AS A GAME IN YOUR STEAM LIBRARY. It is not a game, and running it as a game will prevent it from working as intended. It must be run from your system so it can initialise as an OpenVR overlay app.
 
+If you wish for this app to load when SteamVR loads, run it and look in the SteamVR dashboard Settings>Startup/Shutdown menu for this overlay app. If you move the app or upgrade it, you must follow the steps laid out in the section "Checking the Version and Upgrading" to re-link to SteamVR.
+
 You must run this app after SteamVR is running or it will not be able to connect.
 
 You should not run multiple instances of this app as it has hard coded overlay keys. Close all duplicate instances. (If there is a use case for this please submit an issue and explain)
