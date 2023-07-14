@@ -51,6 +51,8 @@ I apologise for this annoyance, but SteamVR expects apps to be installed into st
 # Settings
 If you wish to reset everything, delete the settings.json file from the app's root directory. You may edit the settings file but be careful not to make errors or you will lose the file as it will be removed when the app is used.
 
+The settings file includes a hidden image mode ("ImageModeActive": false,) that you can set to true if you wish to use images instead of the procedural overlays. Image ImageMasks/a.png is left, and ImageMasks/b.png is right. Only the alpha settings will apply when in this mode. Also, please note the image format and resolution, and the fact there is a central transparent 'gutter' to avoid UV leaking.
+
 # Errors
 NOTE there are OpenVR error names provided alongside most errors. Make sure you note them as well as these error codes.
 
