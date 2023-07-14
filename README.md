@@ -24,7 +24,9 @@ This app will never be distributed by us on any other platform or installer. If 
 This app is licensed under the MIT licence, and uses OpenVR which is under the BSD-3-Clause licence. If you make substantial improvements we ask kindly that you fork from this repository and contribute your changes via a pull request (You are under no obligation to do this under the aforementioned licences, it is a request only).
 
 # How To Use This App
-Download the newest release zip from the [Releases page](https://github.com/albrt-vr/OpenVR.ALBRT.overlay/releases), or the Builds directory, extract it somewhere, make sure SteamVR is running, then run ALBRT.overlay.win64.exe; it is advisable to have a shortcut somewhere easily accessible from within the VR desktop view, as this app must be started from outside of Steam.
+Download the newest release zip from the [Releases page](https://github.com/albrt-vr/OpenVR.ALBRT.overlay/releases), or the Builds directory, extract it somewhere on disk that you intend to keep this app, make sure SteamVR is running, then run ALBRT.overlay.win64.exe from the ALBRT.overlay directory. Please DO NOT change the build directory structure. It should look like: ALBRT.overlay.win64/ALBRT.overlay/[content including the .exe]. It is important that this structure is kept so SteamVR can load the app.
+
+If you move the application directory after launching it for the first time SteamVR will lose the location of the VR manifest, and you will have to run and close SteamVR at least once for it to realise and 'forget' the old location. Once you have done this you should be able to launch ALBRT.overlay again and SteamVR will re-register its new location correctly.
 
 If you are running the app for the first time you will be asked to download the new windows app runtime. If you have issues with windows not downloading it when you accept, it can be found here: 
 https://aka.ms/windowsappsdk/1.3/1.3.230602002/windowsappruntimeinstall-x64.exe
@@ -36,6 +38,13 @@ You must run this app after SteamVR is running or it will not be able to connect
 You should not run multiple instances of this app as it has hard coded overlay keys. Close all duplicate instances. (If there is a use case for this please submit an issue and explain)
 
 To open the app window within VR; open the SteamVR dashboard, press [window icon] 'Desktops' then in the bottom right [(+) circled plus icon] 'Add View'. You may then pin the UI to your controller by pressing the controller icons, or place the window within the VR world by holding on the [+ cross arrows icon] and dragging it around.
+
+# Checking the Version and Upgrading
+To check the version open the task manager and right click the application process and click "properties". Then go to the "Details" tab and look for "Product Version".
+
+When you upgrade by downloading a new version, if the directory structure changes (it will as our master dir has the version string in as this is a floating app) you will lose the link to the VR manifest. You will have to run and close SteamVR at least once for it to realise and 'forget' the old location. Once you have done this you should be able to launch ALBRT.overlay again and SteamVR will re-register its new location correctly.
+
+I apologise for this annoyance, but SteamVR expects apps to be installed into steam, and not into floating directories, so has no tools to aid in re-linking nicely.
 
 # Settings
 If you wish to reset everything, delete the settings.json file from the app's root directory. You may edit the settings file but be careful not to make errors or you will lose the file as it will be removed when the app is used.
