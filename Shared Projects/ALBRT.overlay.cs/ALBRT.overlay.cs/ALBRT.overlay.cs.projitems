@@ -32,9 +32,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)Assets\ALBRT.logo.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\ALBRT.logo.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
     <Content Include="$(MSBuildThisFileDirectory)Assets\icon.ico">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
     <Content Include="$(MSBuildThisFileDirectory)OpenTK\LICENSE.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
