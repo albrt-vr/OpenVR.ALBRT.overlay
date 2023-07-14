@@ -70,6 +70,14 @@
     <Content Include="icon.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Update="Launch Steam + SteamVR.lnk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SteamVR\ALBRT.overlay.win64.vrmanifest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="SettingsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
