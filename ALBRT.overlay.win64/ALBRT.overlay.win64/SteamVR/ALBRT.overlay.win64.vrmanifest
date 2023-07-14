@@ -1,0 +1,21 @@
+{
+	"source" : "builtin",
+	"applications": [
+		{
+			"app_key": "ALBRT.overlay.win64",
+			"launch_type": "binary",
+			"binary_path_windows": "ALBRT.overlay/ALBRT.overlay.win64.exe",
+			"is_dashboard_overlay": true,
+			"arguments": "",
+			"image_path": "",
+			"action_manifest_path" : "none",
+
+			"strings": {
+				"en_us": {
+					"name": "ALBRT Overlay",
+					"description": "ALBRT Overlays for OpenVR"
+				}
+			}
+		}
+	]
+}
