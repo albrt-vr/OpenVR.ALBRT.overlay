@@ -24,7 +24,7 @@ This app will never be distributed by us on any other platform or installer. If 
 This app is licensed under the MIT licence, and uses OpenVR which is under the BSD-3-Clause licence. If you make substantial improvements we ask kindly that you fork from this repository and contribute your changes via a pull request (You are under no obligation to do this under the aforementioned licences, it is a request only).
 
 # How To Use This App
-Download the newest release zip from the [Releases page](https://github.com/albrt-vr/OpenVR.ALBRT.overlay/releases), or the Builds directory, extract it somewhere on disk that you intend to keep this app, make sure SteamVR is running, then run ALBRT.overlay.win64.exe from the ALBRT.overlay directory. Please DO NOT change the build directory structure. It should look like: ALBRT.overlay.win64/ALBRT.overlay/[content including the .exe]. It is important that this structure is kept so SteamVR can load the app.
+Download the newest release zip from the [Releases page](https://github.com/albrt-vr/OpenVR.ALBRT.overlay/releases), or the Builds directory, extract it somewhere on disk that you intend to keep this app, make sure SteamVR is running, then run ALBRT.overlay.win64.exe from the ALBRT.overlay directory. Please DO NOT change the build directory structure. It should look like: ALBRT.overlay_vn-n-n/ALBRT.overlay/[content including the .exe]. It is important that this structure is kept so SteamVR can load the app.
 
 If you move the application directory after launching it for the first time SteamVR will lose the location of the VR manifest, and you will have to run and close SteamVR at least once for it to realise and 'forget' the old location. Once you have done this you should be able to launch ALBRT.overlay again and SteamVR will re-register its new location correctly.
 
@@ -32,6 +32,8 @@ If you are running the app for the first time you will be asked to download the 
 https://aka.ms/windowsappsdk/1.3/1.3.230602002/windowsappruntimeinstall-x64.exe
 
 YOU SHOULD NOT ADD THIS AS A GAME IN YOUR STEAM LIBRARY. It is not a game, and running it as a game will prevent it from working as intended. It must be run from your system so it can initialise as an OpenVR overlay app.
+
+If you wish for this app to load when SteamVR loads, run it and look in the SteamVR dashboard Settings>Startup/Shutdown menu for this overlay app. If you move the app or upgrade it, you must follow the steps laid out in the section "Checking the Version and Upgrading" to re-link to SteamVR.
 
 You must run this app after SteamVR is running or it will not be able to connect.
 
@@ -48,6 +50,8 @@ I apologise for this annoyance, but SteamVR expects apps to be installed into st
 
 # Settings
 If you wish to reset everything, delete the settings.json file from the app's root directory. You may edit the settings file but be careful not to make errors or you will lose the file as it will be removed when the app is used.
+
+The settings file includes a hidden image mode ("ImageModeActive": false,) that you can set to true if you wish to use images instead of the procedural overlays. Image ImageMasks/a.png is left, and ImageMasks/b.png is right. Only the alpha settings will apply when in this mode. Also, please note the image format and resolution, and the fact there is a central transparent 'gutter' to avoid UV leaking.
 
 # Errors
 NOTE there are OpenVR error names provided alongside most errors. Make sure you note them as well as these error codes.
