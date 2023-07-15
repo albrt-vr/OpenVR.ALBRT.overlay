@@ -66,7 +66,7 @@
             PaneTitle=""
             PaneDisplayMode="Left"
             SelectionFollowsFocus="Disabled"
-            IsPaneOpen="False"
+            IsPaneOpen="True"
             Margin="0,28,0,28">
 
             <NavigationView.Resources>
